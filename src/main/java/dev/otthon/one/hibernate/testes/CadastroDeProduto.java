@@ -6,23 +6,27 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
+import dev.otthon.one.hibernate.dao.CategoriaDAO;
 import dev.otthon.one.hibernate.dao.ProdutoDAO;
+import dev.otthon.one.hibernate.modelo.Categoria;
 import dev.otthon.one.hibernate.modelo.Produto;
 import dev.otthon.one.hibernate.util.JPAUtil;
 
 public class CadastroDeProduto {
 	
 	public static void main(String[] args) {
-		Produto celular = new Produto();
-		celular.setNome("Xiaomi Redmi");
-		celular.setDescricao("Muito legal");
-		celular.setPreco(new BigDecimal("800"));
+		Categoria celulares = new Categoria("CELULARES");
+		Produto celular = new Produto("iPhone 13", "128GB - Black", new BigDecimal("800"), celulares);
 		
 		EntityManager em = JPAUtil.getEntityManager();
-		ProdutoDAO dao = new ProdutoDAO(em);
+		ProdutoDAO produtoDAO = new ProdutoDAO(em);
+		CategoriaDAO categoriaDAO = new CategoriaDAO(em);
 
 		em.getTransaction().begin();
-		dao.cadastrar(celular);
+
+		categoriaDAO.cadastrar(celulares);
+		produtoDAO.cadastrar(celular);
+
 		em.getTransaction().commit();
 		em.close();
 	}
