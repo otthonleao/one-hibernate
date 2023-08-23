@@ -3,7 +3,12 @@ package dev.otthon.one.hibernate.modelo;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 @Entity
 @Table(name = "produtos")
@@ -18,6 +23,9 @@ public class Produto {
 	private LocalDate dataCadastro = LocalDate.now(); //O Hibernate já identifica que é data e coloca o BD com o tipo específico para data.
 	@ManyToOne
 	private Categoria categoria;
+
+	public Produto() {
+	}
 
 	public Produto(String nome, String descricao, BigDecimal preco, Categoria categoria) {
 		this.nome = nome;
@@ -67,4 +75,5 @@ public class Produto {
 	public void setCategoria(Categoria categoria) {
 		this.categoria = categoria;
 	}
+
 }

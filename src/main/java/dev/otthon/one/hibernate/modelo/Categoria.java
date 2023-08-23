@@ -1,6 +1,10 @@
 package dev.otthon.one.hibernate.modelo;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
 @Table(name = "categorias")
@@ -11,15 +15,11 @@ public class Categoria {
     private Long id;
     private String nome;
 
-    public Categoria (String nome) {
-        this.nome = nome;
+    public Categoria() {
     }
 
-    public Long getId() {
-        return id;
-    }
-    public void setId(Long id) {
-        this.id = id;
+    public Categoria(String nome) {
+        this.nome = nome;
     }
 
     public String getNome() {
@@ -28,4 +28,5 @@ public class Categoria {
     public void setNome(String nome) {
         this.nome = nome;
     }
+
 }
