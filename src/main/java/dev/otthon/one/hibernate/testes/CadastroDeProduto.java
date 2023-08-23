@@ -3,8 +3,6 @@ package dev.otthon.one.hibernate.testes;
 import java.math.BigDecimal;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 
 import dev.otthon.one.hibernate.dao.CategoriaDAO;
 import dev.otthon.one.hibernate.dao.ProdutoDAO;
@@ -29,5 +27,8 @@ public class CadastroDeProduto {
 
 		em.getTransaction().commit();
 		em.close();
+
+//		celulares.setNome("Samsung Galaxy S22");
+//		em.flush();
 	}
 }
